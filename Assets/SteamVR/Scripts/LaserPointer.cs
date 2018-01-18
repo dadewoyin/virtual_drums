@@ -48,12 +48,16 @@ public class LaserPointer : MonoBehaviour {
         Vector3 difference = cameraRigTransform.position - headTransform.position;
         difference.y = 0; // reset y to 0, difference doesn't consider verticle position
         cameraRigTransform.position = hitPoint + difference;
+        Debug.Log("Difference: " + difference);
     }
 
     // Use this for initialization
     void Start () {
         laser = Instantiate(laserPrefab); // spawn a new laser and save reference to laser variable
         laserTransform = laser.transform; // store laser's transform component
+
+        reticle = Instantiate(teleportReticlePrefab);
+        teleportReticleTransform = reticle.transform;
 	}
 	
 	// Update is called once per frame
@@ -75,6 +79,11 @@ public class LaserPointer : MonoBehaviour {
         {
             laser.SetActive(false); // hide laser when player released the touchpad
             reticle.SetActive(false);
+        }
+
+        if (Controller.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && shouldTeleport)
+        {
+            Teleport();
         }
 	}
 }
