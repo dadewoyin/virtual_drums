@@ -23,7 +23,7 @@ public class ViveControllerInputTest : MonoBehaviour {
 
         if (Controller.GetAxis() != Vector2.zero) // Get the position of the finger when it’s on the touchpad and write it to the Console.
         {
-            Debug.Log(gameObject.name + Controller.GetAxis());
+            // Debug.Log(gameObject.name + Controller.GetAxis());
         }
 
         if (Controller.GetHairTriggerDown()) // When you squeeze the hair trigger, this line writes to the Console. The hair trigger has special methods to check whether it is pressed or not: GetHairTrigger(), GetHairTriggerDown() and GetHairTriggerUp()

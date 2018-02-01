@@ -37,8 +37,8 @@ public class LaserPointer : MonoBehaviour {
         laserTransform.position = Vector3.Lerp(trackedObj.transform.position, hitPoint, .5f); // position laser between controller and point where raycast hits. Using lerp because you can give it two positions and the percent it should travel. If you pass it 0.5f (50%), it returns the precise middle point.
         laserTransform.LookAt(hitPoint); // point laser where raycast hits
         laserTransform.localScale = new Vector3(laserTransform.localScale.x, laserTransform.localScale.y,hit.distance); // scale laser so it fits between two positions
-        Debug.Log("headTransform.position: " + headTransform.position);
-        Debug.Log("cameraRigTransform's position: " + cameraRigTransform.position);
+        // Debug.Log("headTransform.position: " + headTransform.position);
+        // Debug.Log("cameraRigTransform's position: " + cameraRigTransform.position);
     }
 
     private void Teleport()
@@ -68,6 +68,11 @@ public class LaserPointer : MonoBehaviour {
 
             if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask)) // shoot a ray from the controller. If it hits something, make it store the point where it hit and show the laser
             {
+                if (hit.collider.gameObject)
+                {
+                    // print(hit.collider.gameObject.name);
+                }
+
                 hitPoint = hit.point;
                 ShowLaser(hit);
                 reticle.SetActive(true); // show reticle

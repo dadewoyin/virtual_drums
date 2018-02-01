@@ -1,0 +1,214 @@
+fileFormatVersion: 2
+guid: 69ec390c6ecebe347a7c637f24a7f535
+timeCreated: 1484573719
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: apple
+    100004: apple_2
+    100006: board
+    100008: bowl
+    100010: bx1
+    100012: bx2
+    100014: bx3
+    100016: bx4
+    100018: bx5
+    100020: bx5.001
+    100022: cup
+    100024: dish
+    100026: dish_2
+    100028: door_1
+    100030: door_2
+    100032: door_3
+    100034: door_4
+    100036: kitchen
+    100038: kitchen2
+    100040: knife
+    100042: knife_2
+    100044: pan
+    100046: saucepan
+    100048: saucepan_2
+    100050: saucepan_cap
+    100052: saucepan_cap_2
+    100054: kitchen3
+    400000: //RootNode
+    400002: apple
+    400004: apple_2
+    400006: board
+    400008: bowl
+    400010: bx1
+    400012: bx2
+    400014: bx3
+    400016: bx4
+    400018: bx5
+    400020: bx5.001
+    400022: cup
+    400024: dish
+    400026: dish_2
+    400028: door_1
+    400030: door_2
+    400032: door_3
+    400034: door_4
+    400036: kitchen
+    400038: kitchen2
+    400040: knife
+    400042: knife_2
+    400044: pan
+    400046: saucepan
+    400048: saucepan_2
+    400050: saucepan_cap
+    400052: saucepan_cap_2
+    400054: kitchen3
+    2300000: //RootNode
+    2300002: apple
+    2300004: apple_2
+    2300006: board
+    2300008: bowl
+    2300010: bx1
+    2300012: bx2
+    2300014: bx3
+    2300016: bx4
+    2300018: bx5
+    2300020: bx5.001
+    2300022: cup
+    2300024: dish
+    2300026: dish_2
+    2300028: door_1
+    2300030: door_2
+    2300032: door_3
+    2300034: door_4
+    2300036: kitchen
+    2300038: kitchen2
+    2300040: knife
+    2300042: knife_2
+    2300044: pan
+    2300046: saucepan
+    2300048: saucepan_2
+    2300050: saucepan_cap
+    2300052: saucepan_cap_2
+    2300054: kitchen3
+    3300000: //RootNode
+    3300002: apple
+    3300004: apple_2
+    3300006: board
+    3300008: bowl
+    3300010: bx1
+    3300012: bx2
+    3300014: bx3
+    3300016: bx4
+    3300018: bx5
+    3300020: bx5.001
+    3300022: cup
+    3300024: dish
+    3300026: dish_2
+    3300028: door_1
+    3300030: door_2
+    3300032: door_3
+    3300034: door_4
+    3300036: kitchen
+    3300038: kitchen2
+    3300040: knife
+    3300042: knife_2
+    3300044: pan
+    3300046: saucepan
+    3300048: saucepan_2
+    3300050: saucepan_cap
+    3300052: saucepan_cap_2
+    3300054: kitchen3
+    4300000: kitchen
+    4300002: dish_2
+    4300004: cup
+    4300006: bowl
+    4300008: apple_2
+    4300010: apple
+    4300012: pan
+    4300014: knife_2
+    4300016: knife
+    4300018: saucepan_2
+    4300020: saucepan_cap_2
+    4300022: saucepan
+    4300024: saucepan_cap
+    4300026: board
+    4300028: kitchen2
+    4300030: door_4
+    4300032: door_3
+    4300034: bx5.001
+    4300036: bx4
+    4300038: bx3
+    4300040: bx2
+    4300042: bx5
+    4300044: bx1
+    4300046: door_2
+    4300048: door_1
+    4300050: dish
+    4300052: kitchen3
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
