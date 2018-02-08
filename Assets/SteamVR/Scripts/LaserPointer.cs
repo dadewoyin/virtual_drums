@@ -68,16 +68,21 @@ public class LaserPointer : MonoBehaviour {
 
             if (Physics.Raycast(trackedObj.transform.position, transform.forward, out hit, 100, teleportMask)) // shoot a ray from the controller. If it hits something, make it store the point where it hit and show the laser
             {
-                if (hit.collider.gameObject)
-                {
-                    // print(hit.collider.gameObject.name);
-                }
+				hitPoint = hit.point;
+				ShowLaser(hit);
 
-                hitPoint = hit.point;
-                ShowLaser(hit);
-                reticle.SetActive(true); // show reticle
-                teleportReticleTransform.position = hitPoint + teleportReticleOffset; // move reticle to where the raycast hit w/ offset to avoid Z-fighting
-                shouldTeleport = true;
+				if (hit.collider.gameObject.name == "Tv") {
+					
+					print (hit.collider.gameObject.name);
+					// play video
+
+				} else if (hit.collider.gameObject.layer == 8) {
+					
+					reticle.SetActive(true); // show reticle
+					teleportReticleTransform.position = hitPoint + teleportReticleOffset; // move reticle to where the raycast hit w/ offset to avoid Z-fighting
+					shouldTeleport = true;
+
+				}
             }
         }
         else
