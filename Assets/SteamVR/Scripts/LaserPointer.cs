@@ -70,19 +70,9 @@ public class LaserPointer : MonoBehaviour {
             {
 				hitPoint = hit.point;
 				ShowLaser(hit);
-
-				if (hit.collider.gameObject.name == "Tv") {
-					
-					print (hit.collider.gameObject.name);
-					// play video
-
-				} else if (hit.collider.gameObject.layer == 8) {
-					
-					reticle.SetActive(true); // show reticle
-					teleportReticleTransform.position = hitPoint + teleportReticleOffset; // move reticle to where the raycast hit w/ offset to avoid Z-fighting
-					shouldTeleport = true;
-
-				}
+				reticle.SetActive(true); // show reticle
+				teleportReticleTransform.position = hitPoint + teleportReticleOffset; // move reticle to where the raycast hit w/ offset to avoid Z-fighting
+				shouldTeleport = true;
             }
         }
         else

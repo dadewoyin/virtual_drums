@@ -6,6 +6,7 @@ TagManager:
   tags:
   - LoopSound
   - DrumSound
+  - Tutorial
   layers:
   - Default
   - TransparentFX

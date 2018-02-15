@@ -270,6 +270,7 @@ public class VideoController : MonoBehaviour
     public void Play()
     {
         StartCoroutine(WaitAndPlay());
+		Debug.Log ("yah boi");
     }
 
     IEnumerator WaitAndPlay()

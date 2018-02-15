@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControllerGrabObject : MonoBehaviour {
+public class PlayDrum : MonoBehaviour {
 
+	[SerializeField]
+	private GameObject videoPlayer;
     private SteamVR_TrackedObject trackedObj;
     private GameObject collidingObject; // object that trigger is colliding with
     private AudioSource soundAudio;
@@ -29,13 +31,18 @@ public class ControllerGrabObject : MonoBehaviour {
         }
 
         collidingObject = col.gameObject;
+		Debug.Log ("bitch" + collidingObject);
         soundAudio = collidingObject.GetComponent<AudioSource>();
         Debug.Log("Sound audio: " + soundAudio);
 
         if (soundAudio)
         {
             if (collidingObject.tag == "DrumSound")
-            {
+			{
+				Debug.Log("Yah boi");
+				Debug.Log(Controller.velocity);
+				//soundAudio.volume = Controller.velocity.y * -1.2f;
+				//Debug.Log (soundAudio.volume);
                 soundAudio.Play();
             }
 
@@ -70,8 +77,8 @@ public class ControllerGrabObject : MonoBehaviour {
     public void OnTriggerEnter(Collider other)
     {
         PlayAudio(other);
-        Debug.Log("Controller velocity: " + Controller.velocity);
-        // Debug.Log("Controller angularvelocity: " + Controller.angularVelocity);
+		Debug.Log ("Collider name: " + other.gameObject);
+        Debug.Log ("Controller velocity: " + Controller.velocity);
         Controller.TriggerHapticPulse(7000);
         
     }
@@ -130,6 +137,16 @@ public class ControllerGrabObject : MonoBehaviour {
             {
                 GrabObject();
             }
+
+			HighQualityPlayback tutorialControls = videoPlayer.GetComponent<HighQualityPlayback> ();
+			VideoController youtubeVideo = videoPlayer.GetComponent<VideoController> ();
+			if (!youtubeVideo.sourceVideo.isPlaying) {
+				tutorialControls.PlayYoutubeVideo (tutorialControls.videoId);	
+			} else if (youtubeVideo.sourceVideo.isPlaying) {
+				youtubeVideo.Pause();
+			}
+
+
         }
 
         if (Controller.GetHairTriggerUp()) // release object when player releases trigger and there's an object in hand
