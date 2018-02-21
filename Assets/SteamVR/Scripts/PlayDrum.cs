@@ -9,6 +9,7 @@ public class PlayDrum : MonoBehaviour {
     private SteamVR_TrackedObject trackedObj;
     private GameObject collidingObject; // object that trigger is colliding with
     private AudioSource soundAudio;
+	private bool playingSound;
     private GameObject objectInHand; // Game object user is currently grabbing
     private SteamVR_Controller.Device Controller
     {
@@ -21,6 +22,14 @@ public class PlayDrum : MonoBehaviour {
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
     }
+
+	//length is how long the vibration should go for
+	//strength is vibration strength from 0-1
+	private void LongVibration(float length, float strength) {
+		for(float i = 0; i < length; i += Time.deltaTime) {
+			Controller.TriggerHapticPulse((ushort)Mathf.Lerp(0, 3999, strength));
+		}
+	}
 
     private void PlayAudio(Collider col) // play audio unless there's no rigidbody, audio, or the user is already hitting something with that hand
     {
@@ -39,10 +48,12 @@ public class PlayDrum : MonoBehaviour {
         {
             if (collidingObject.tag == "DrumSound")
 			{
+				// playingSound = true;
 				Debug.Log("Yah boi");
 				Debug.Log(Controller.velocity);
 				//soundAudio.volume = Controller.velocity.y * -1.2f;
 				//Debug.Log (soundAudio.volume);
+				LongVibration(2000, 1);
                 soundAudio.Play();
             }
 
@@ -60,6 +71,7 @@ public class PlayDrum : MonoBehaviour {
                 }
             }
 
+			playingSound = false;
             ChangeLightColor(light1, light2, light3, light4);
 
         }
@@ -79,13 +91,12 @@ public class PlayDrum : MonoBehaviour {
         PlayAudio(other);
 		Debug.Log ("Collider name: " + other.gameObject);
         Debug.Log ("Controller velocity: " + Controller.velocity);
-        Controller.TriggerHapticPulse(7000);
-        
     }
 
     public void OnTriggerStay(Collider other)
     {
         //Debug.Log("Hit object: " + collidingObject);
+		// LongVibration(100, 0.8f);
     }
 
     public void OnTriggerExit(Collider other)
@@ -97,49 +108,18 @@ public class PlayDrum : MonoBehaviour {
 
         collidingObject = null;
     }
-
-    public void GrabObject()
-    {
-        objectInHand = collidingObject; // put game object in player's hand & remove it from colliding object
-        collidingObject = null;
-
-        var joint = AddFixedJoint(); // connects controller to the object using the AddFixedJoint()
-        joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
-    }
-
-    private FixedJoint AddFixedJoint() // make new fixed joint, add to controller, & then set it up so it doesn't 
-    {
-        FixedJoint fx = gameObject.AddComponent<FixedJoint>();
-        fx.breakForce = 20000;
-        fx.breakTorque = 20000;
-        return fx;
-    }
-
-    private void ReleaseObject()
-    {
-        if (GetComponent<FixedJoint>()) // make sure there's a fixed joint attached to controller
-        {
-            GetComponent<FixedJoint>().connectedBody = null; // if so, remove joint & destroy the joint
-            Destroy(GetComponent<FixedJoint>());
-
-            objectInHand.GetComponent<Rigidbody>().velocity = Controller.velocity; // add speed and rotation of controller when the player releases the object, so the result is a realistic arc
-            objectInHand.GetComponent<Rigidbody>().angularVelocity = Controller.angularVelocity;
-        }
-
-        objectInHand = null; // remove reference to formerly attached object
-    }
+		
 
     // Update is called once per frame
     void Update () {
+		// LongVibration (800, 800);
+
 		if (Controller.GetHairTriggerDown()) // grab object when player squeezes trigger and there's a potential target
         {
-            if (collidingObject)
-            {
-                GrabObject();
-            }
 
 			HighQualityPlayback tutorialControls = videoPlayer.GetComponent<HighQualityPlayback> ();
 			VideoController youtubeVideo = videoPlayer.GetComponent<VideoController> ();
+
 			if (!youtubeVideo.sourceVideo.isPlaying) {
 				tutorialControls.PlayYoutubeVideo (tutorialControls.videoId);	
 			} else if (youtubeVideo.sourceVideo.isPlaying) {
@@ -149,12 +129,9 @@ public class PlayDrum : MonoBehaviour {
 
         }
 
-        if (Controller.GetHairTriggerUp()) // release object when player releases trigger and there's an object in hand
+        if (Controller.GetHairTriggerUp()) // when player releases trigger
         {
-            if (objectInHand)
-            {
-                ReleaseObject();
-            }
+
         }
 	}
 }

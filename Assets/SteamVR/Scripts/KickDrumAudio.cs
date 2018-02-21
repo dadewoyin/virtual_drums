@@ -46,7 +46,7 @@ public class KickDrumAudio : MonoBehaviour {
         // Debug.Log("Tracker Position: " + Controller.transform.pos.y);
         // HitKickDrum(KickDrum);
 
-		if (Controller.velocity.y < -0.6) {
+		if (Controller.velocity.y < -0.5) {
 			Debug.Log("Controller velocity: " + Controller.velocity);
 			HitKickDrum (kickDrum);
 			Debug.Log (kickDrum);
