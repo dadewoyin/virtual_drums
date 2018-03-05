@@ -17,6 +17,7 @@ public class PlayDrum : MonoBehaviour {
     }
 
     public Light light1, light2, light3, light4;
+	private IEnumerator coroutine;
 
     void Awake()
     {
@@ -31,6 +32,13 @@ public class PlayDrum : MonoBehaviour {
 		}
 	}
 
+	private float SetDrumVolume(Vector3 velocity) {
+		Debug.Log ("y:" + velocity.y);
+		float volume = Mathf.Abs (velocity.y);
+		Debug.Log ("volume: " + volume);
+		return volume;
+	}
+
     private void PlayAudio(Collider col) // play audio unless there's no rigidbody, audio, or the user is already hitting something with that hand
     {
 
@@ -40,20 +48,14 @@ public class PlayDrum : MonoBehaviour {
         }
 
         collidingObject = col.gameObject;
-		Debug.Log ("bitch" + collidingObject);
         soundAudio = collidingObject.GetComponent<AudioSource>();
-        Debug.Log("Sound audio: " + soundAudio);
 
         if (soundAudio)
         {
-            if (collidingObject.tag == "DrumSound")
+			
+			if (collidingObject.tag == "DrumSound") //  && Controller.velocity.y < 0
 			{
-				// playingSound = true;
-				Debug.Log("Yah boi");
-				Debug.Log(Controller.velocity);
-				//soundAudio.volume = Controller.velocity.y * -1.2f;
-				//Debug.Log (soundAudio.volume);
-				LongVibration(2000, 1);
+				// soundAudio.volume = SetDrumVolume (Controller.velocity);
                 soundAudio.Play();
             }
 
@@ -70,8 +72,7 @@ public class PlayDrum : MonoBehaviour {
                     Debug.Log("Playing Looped Sound");
                 }
             }
-
-			playingSound = false;
+				
             ChangeLightColor(light1, light2, light3, light4);
 
         }
@@ -89,8 +90,7 @@ public class PlayDrum : MonoBehaviour {
     public void OnTriggerEnter(Collider other)
     {
         PlayAudio(other);
-		Debug.Log ("Collider name: " + other.gameObject);
-        Debug.Log ("Controller velocity: " + Controller.velocity);
+		// LongVibration(2000, 1);
     }
 
     public void OnTriggerStay(Collider other)
@@ -107,12 +107,12 @@ public class PlayDrum : MonoBehaviour {
         }
 
         collidingObject = null;
+		//LongVibration(2200, 1);
     }
 		
 
     // Update is called once per frame
     void Update () {
-		// LongVibration (800, 800);
 
 		if (Controller.GetHairTriggerDown()) // grab object when player squeezes trigger and there's a potential target
         {
@@ -125,7 +125,6 @@ public class PlayDrum : MonoBehaviour {
 			} else if (youtubeVideo.sourceVideo.isPlaying) {
 				youtubeVideo.Pause();
 			}
-
 
         }
 
